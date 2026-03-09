@@ -35,6 +35,15 @@ export default function Navbar() {
           <ul className="flex flex-col md:flex-row gap-4 md:gap-6">
             <li>
               <Link
+                href="/home"
+                className="block py-1 text-gray-700 hover:text-blue-600"
+                onClick={() => setOpen(false)}
+              >
+                Home
+              </Link>
+            </li>
+            <li>
+              <Link
                 href="/services"
                 className="block py-1 text-gray-700 hover:text-blue-600"
                 onClick={() => setOpen(false)}
@@ -59,7 +68,8 @@ export default function Navbar() {
               >
                 Contact
               </Link>
-            </li>
+            </li> 
+            
           </ul>
         </div>
       </div>

@@ -1,17 +1,32 @@
-export default function Contact() {
+import ContactCTA from "../../components/contact/ContactCTA";
+import ContactForm from "../../components/contact/ContactForm";
+import ContactHero from "../../components/contact/ContactHero";
+import ContactInfo from "../../components/contact/ContactInfo";
+import MapSection from "../../components/contact/MapSection";
+
+export default function ContactPage() {
   return (
-    <div className="max-w-3xl mx-auto px-4 py-24">
-      <h1 className="text-3xl font-bold">Contact Us</h1>
+    <main className="flex flex-col gap-24">
+      <ContactHero />
+      <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+        
+        {/* Map takes 5 columns */}
+        <div className="lg:col-span-5 w-full">
+          <MapSection />
+        </div>
 
-      <form className="mt-8 space-y-4">
-        <input type="text" placeholder="Your Name" className="w-full p-3 border rounded" />
-        <input type="email" placeholder="Your Email" className="w-full p-3 border rounded" />
-        <textarea placeholder="Message" className="w-full p-3 border rounded" rows={6} />
+        {/* Info takes 3 columns (Narrower) */}
+        <div className="lg:col-span-3">
+          <ContactInfo />
+        </div>
 
-        <button className="bg-blue-600 text-white px-6 py-3 rounded-md">
-          Send Message
-        </button>
-      </form>
-    </div>
+        {/* Form takes 4 columns */}
+        <div className="lg:col-span-4">
+          <ContactForm />
+        </div>
+
+      </div>
+      <ContactCTA />
+    </main>
   );
 }

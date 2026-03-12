@@ -1,51 +1,47 @@
-// components/navbar.tsx
-import Link from "next/link"
-import { Button } from "@/components/ui/button"
+"use client";
+
+import { ModeToggle } from "@/components/ModeToggle";
+import Image from "next/image";
+import Link from "next/link";
 
 const navItems = [
-  { name: "Home", href: "/" },
+  { name: "Industrie", href: "/industries" },
   { name: "About", href: "/about" },
   { name: "Services", href: "/services" },
   { name: "Contact", href: "/contact" },
-]
+];
 
-export function Navbar() {
+export default function Navbar() {
   return (
-    <header className="fixed top-0 left-0 z-50 w-full px-6 py-4">
-      <nav
-        className="
-          group mx-auto flex max-w-7xl items-center justify-between
-          rounded-full border border-transparent
-          bg-transparent px-6 py-3
-          transition-all duration-300 ease-in-out
-          hover:border-slate-200 hover:bg-white hover:shadow-md
-        "
-      >
-        <Link
-          href="/"
-          className="text-lg font-bold text-white transition-colors duration-300 group-hover:text-slate-900"
-        >
-          MyBrand
-        </Link>
+    <header className="fixed top-0 left-0 z-50 w-full">
+      <div className="mx-auto max-w-[95%] px-4 pt-6">
+        <nav className="flex items-center justify-between rounded-full px-8 py-0 bg-background/80 backdrop-blur-md shadow-sm transition-all duration-300 ease-in-out">
+          <Link href="/industries" className="flex items-center">
+            <Image
+              src="/images/logo-removebg-preview.png"
+              alt="logo"
+              width={160}
+              height={48}
+              priority
+              className="h-auto w-auto object-contain"
+            />
+          </Link>
 
-        <div className="hidden items-center gap-8 md:flex">
-          {navItems.map((item) => (
-            <Link
-              key={item.name}
-              href={item.href}
-              className="text-sm font-medium text-white transition-colors duration-300 hover:text-slate-600 group-hover:text-slate-900"
-            >
-              {item.name}
-            </Link>
-          ))}
-        </div>
+          <div className="hidden md:flex items-center gap-10">
+            {navItems.map((item) => (
+              <Link
+                key={item.name}
+                href={item.href}
+                className="text-lg font-medium text-foreground"
+              >
+                {item.name}
+              </Link>
+            ))}
 
-        <div className="hidden md:block">
-          <Button className="bg-white text-slate-900 transition-all duration-300 group-hover:bg-slate-900 group-hover:text-white">
-            Get Started
-          </Button>
-        </div>
-      </nav>
+            <ModeToggle />
+          </div>
+        </nav>
+      </div>
     </header>
-  )
+  );
 }

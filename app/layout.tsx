@@ -2,10 +2,11 @@
 import type { Metadata } from "next";
 import "./globals.css";
 
-import Navbar from "../components/Navbar";
-import Footer from "../components/Footer";
 import { Geist } from "next/font/google";
 import { cn } from "@/lib/utils";
+import Footer from "../components/Footer";
+import Navbar from "../components/Navbar";
+import { ThemeProvider } from "next-themes";
 
 const geist = Geist({subsets:['latin'],variable:'--font-sans'});
 
@@ -21,12 +22,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={cn("font-sans", geist.variable)}>
-      <body className="bg-white text-gray-900">
-        <Navbar />
-        <main className="min-h-screen pt-16">{children}</main>
-        <Footer />
-      </body>
-    </html>
+    <html lang="en" suppressHydrationWarning className={geist.variable}>
+  <body className="bg-background text-foreground">
+    <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+      <Navbar />
+      <main className="min-h-screen">{children}</main>
+      <Footer />
+    </ThemeProvider>
+  </body>
+</html>
   );
 }

@@ -5,3 +5,4 @@ upload new .pem key correctly
 update path directry
 add some path
 add some code
+change all main.yml

@@ -1,31 +1,145 @@
-export default function TeamCTA() {
-  return (
-    <section className="relative py-20 text-center text-white">
+'use client';
 
+import { useState, useEffect } from "react";
+import { Users, ArrowRight, Sparkles } from "lucide-react";
+
+export default function TeamCTA() {
+  const [isVisible, setIsVisible] = useState(false);
+  const [currentTestimonial, setCurrentTestimonial] = useState(0);
+
+  useEffect(() => {
+    // Defer the visibility change to the next animation frame to avoid synchronous setState in the effect body
+    const raf = requestAnimationFrame(() => setIsVisible(true));
+
+    // Auto-rotate testimonials
+    const interval = setInterval(() => {
+      setCurrentTestimonial(prev => (prev + 1) % testimonials.length);
+    }, 4000);
+
+    return () => {
+      cancelAnimationFrame(raf);
+      clearInterval(interval);
+    };
+  }, []);
+
+  const testimonials = [
+    {
+      text: "Working at IndoNorTech has been an incredible journey of growth and innovation.",
+      author: "Sarah Chen",
+      role: "Senior Software Engineer"
+    },
+    {
+      text: "The collaborative environment and cutting-edge projects make every day exciting.",
+      author: "Marcus Rodriguez",
+      role: "Lead Developer"
+    },
+    {
+      text: "Joining this team was the best career decision I've ever made.",
+      author: "Priya Patel",
+      role: "Product Manager"
+    }
+  ];
+
+  return (
+    <section className="relative py-24 lg:py-32 text-center text-white overflow-hidden">
+      {/* Background */}
       <div
         className="absolute inset-0 bg-cover bg-center"
         style={{ backgroundImage: "url('/images/office1.png')" }}
       />
+      <div className="absolute inset-0 bg-gradient-to-br from-black/70 via-black/60 to-black/50" />
 
-      <div className="absolute inset-0 bg-black/30" />
-
-      <div className="relative max-w-3xl mx-auto px-6">
-
-        <h2 className="text-4xl font-bold mb-6">
-          Join Our Team
-        </h2>
-
-        <p className="opacity-90 mb-8">
-          We are always looking for talented engineers passionate about
-          building world-class software.
-        </p>
-
-        <button className="px-8 py-3 rounded-full bg-primary text-white hover:opacity-90">
-          View Careers
-        </button>
-
+      {/* Animated background elements */}
+      <div className="absolute inset-0">
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/20 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-blue-500/20 rounded-full blur-3xl animate-pulse delay-1000"></div>
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-purple-500/10 rounded-full blur-3xl animate-pulse delay-2000"></div>
       </div>
 
+      <div className="relative max-w-6xl mx-auto px-6 space-y-12">
+        {/* Header */}
+        <div className={`transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+          <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm text-white px-4 py-2 rounded-full text-sm font-medium mb-6">
+            <Sparkles className="w-4 h-4" />
+            Join Our Team
+          </div>
+          <h2 className="text-5xl lg:text-6xl font-bold mb-6 leading-tight">
+            Shape the Future of
+            <span className="block bg-gradient-to-r from-primary to-blue-400 bg-clip-text text-transparent">
+              Technology
+            </span>
+          </h2>
+          <p className="text-xl opacity-95 max-w-3xl mx-auto leading-relaxed">
+            We are always looking for talented engineers passionate about building
+            world-class software. Join our diverse team and make an impact.
+          </p>
+        </div>
+
+        {/* Testimonial Carousel */}
+        <div className={`bg-white/10 backdrop-blur-md p-8 rounded-2xl border border-white/20 transition-all duration-1000 delay-300 ${
+          isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+        }`}>
+          <div className="relative">
+            <div className="text-center space-y-4">
+              <p className="text-lg italic opacity-95 max-w-2xl mx-auto">
+                "{testimonials[currentTestimonial].text}"
+              </p>
+              <div>
+                <div className="font-semibold">{testimonials[currentTestimonial].author}</div>
+                <div className="text-sm opacity-80">{testimonials[currentTestimonial].role}</div>
+              </div>
+            </div>
+
+            {/* Testimonial indicators */}
+            <div className="flex justify-center gap-2 mt-6">
+              {testimonials.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => setCurrentTestimonial(index)}
+                  className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                    index === currentTestimonial ? 'bg-white' : 'bg-white/40'
+                  }`}
+                />
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* CTA Buttons */}
+        <div className={`flex flex-col sm:flex-row gap-4 justify-center items-center transition-all duration-1000 delay-500 ${
+          isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+        }`}>
+          <button className="group px-8 py-4 bg-primary text-white rounded-lg font-semibold hover:bg-primary/90 transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105 flex items-center gap-2">
+            <Users className="w-5 h-5" />
+            View Open Positions
+            <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+          </button>
+          <button className="px-8 py-4 border-2 border-white/30 text-white rounded-lg font-semibold hover:bg-white/10 transition-all duration-300 backdrop-blur-sm">
+            Learn About Our Culture
+          </button>
+        </div>
+
+        {/* Benefits */}
+        <div className={`grid md:grid-cols-3 gap-6 mt-16 transition-all duration-1000 delay-700 ${
+          isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+        }`}>
+          <div className="bg-white/10 backdrop-blur-sm p-6 rounded-xl border border-white/20">
+            <div className="text-2xl font-bold mb-2">🏆</div>
+            <div className="font-semibold mb-1">Competitive Salary</div>
+            <div className="text-sm opacity-80">Industry-leading compensation</div>
+          </div>
+          <div className="bg-white/10 backdrop-blur-sm p-6 rounded-xl border border-white/20">
+            <div className="text-2xl font-bold mb-2">🚀</div>
+            <div className="font-semibold mb-1">Growth Opportunities</div>
+            <div className="text-sm opacity-80">Continuous learning & development</div>
+          </div>
+          <div className="bg-white/10 backdrop-blur-sm p-6 rounded-xl border border-white/20">
+            <div className="text-2xl font-bold mb-2">⚖️</div>
+            <div className="font-semibold mb-1">Work-Life Balance</div>
+            <div className="text-sm opacity-80">Flexible working arrangements</div>
+          </div>
+        </div>
+      </div>
     </section>
   );
 }

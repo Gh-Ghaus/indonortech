@@ -11,3 +11,4 @@ Fix almost all bugs
 git clone
 change user name
 update something
+instal npm

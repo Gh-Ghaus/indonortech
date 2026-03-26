@@ -7,21 +7,6 @@ export default function TeamCTA() {
   const [isVisible, setIsVisible] = useState(false);
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
 
-  useEffect(() => {
-    // Defer the visibility change to the next animation frame to avoid synchronous setState in the effect body
-    const raf = requestAnimationFrame(() => setIsVisible(true));
-
-    // Auto-rotate testimonials
-    const interval = setInterval(() => {
-      setCurrentTestimonial(prev => (prev + 1) % testimonials.length);
-    }, 4000);
-
-    return () => {
-      cancelAnimationFrame(raf);
-      clearInterval(interval);
-    };
-  }, []);
-
   const testimonials = [
     {
       text: "Working at IndoNorTech has been an incredible journey of growth and innovation.",
@@ -39,6 +24,21 @@ export default function TeamCTA() {
       role: "Product Manager"
     }
   ];
+
+  useEffect(() => {
+    // Defer the visibility change to the next animation frame to avoid synchronous setState in the effect body
+    const raf = requestAnimationFrame(() => setIsVisible(true));
+
+    // Auto-rotate testimonials
+    const interval = setInterval(() => {
+      setCurrentTestimonial(prev => (prev + 1) % testimonials.length);
+    }, 4000);
+
+    return () => {
+      cancelAnimationFrame(raf);
+      clearInterval(interval);
+    };
+  }, [testimonials.length]);
 
   return (
     <section className="relative py-24 lg:py-32 text-center text-white overflow-hidden">
@@ -82,7 +82,7 @@ export default function TeamCTA() {
           <div className="relative">
             <div className="text-center space-y-4">
               <p className="text-lg italic opacity-95 max-w-2xl mx-auto">
-                "{testimonials[currentTestimonial].text}"
+                {testimonials[currentTestimonial].text}
               </p>
               <div>
                 <div className="font-semibold">{testimonials[currentTestimonial].author}</div>

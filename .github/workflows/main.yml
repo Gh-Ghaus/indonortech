@@ -43,4 +43,4 @@ jobs:
       - name: Deploy to EC2
         run: |
          scp -r ./ ubuntu@54.254.191.63:/home/ubuntu/app
-          ssh ubuntu@54.254.191.63 'cd /home/ubuntu/app && npm ci && npm run build && pm2 restart your-app'
+          ssh ubuntu@54.254.191.63 'cd /home/ubuntu/app && npm ci && npm run build && pm2 restart app'

@@ -3,3 +3,4 @@ update ip address
 update in main.yml
 upload new .pem key correctly
 update path directry
+add some path

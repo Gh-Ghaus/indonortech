@@ -44,7 +44,12 @@ jobs:
             run: |
             ssh ubuntu@54.254.191.63 "sudo chown -R ubuntu:ubuntu /home/ubuntu/app"
 
-      - name: Deploy to EC2
-        run: |
-         scp -r ./ ubuntu@54.254.191.63:/home/ubuntu/app
-          ssh ubuntu@54.254.191.63 'cd /home/ubuntu/app && npm ci && npm run build && pm2 restart app'
+
+          - name: Deploy
+                 run: |
+                  ssh -o StrictHostKeyChecking=no ubuntu@54.254.191.63 "cd /home/ubuntu/app && git pull origin main && npm install && npm run build"
+
+     # - name: Deploy to EC2
+       # run: |
+        # scp -r ./ ubuntu@54.254.191.63:/home/ubuntu/app
+         # ssh ubuntu@54.254.191.63 'cd /home/ubuntu/app && npm ci && npm run build && pm2 restart app'

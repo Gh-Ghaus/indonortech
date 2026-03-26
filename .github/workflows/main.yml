@@ -39,6 +39,10 @@ jobs:
           echo "${{ secrets.EC2_SSH_KEY }}" | tr -d '\r' > ~/.ssh/id_rsa
           chmod 600 ~/.ssh/id_rsa
           ssh-keyscan -H 54.254.191.63 >> ~/.ssh/known_hosts
+        
+          - name: Fix permissions (one time)
+            run: |
+            ssh ubuntu@54.254.191.63 "sudo chown -R ubuntu:ubuntu /home/ubuntu/app"
 
       - name: Deploy to EC2
         run: |

@@ -4,7 +4,7 @@ import ServicesSection from "../../components/service/ServicesSection";
 
 export default function ServicesPage() {
   return (
-    <main className="flex flex-col gap-32">
+    <main className="overflow-x-hidden">
       <HeroSection />
       <ServicesSection />
       <CTASection />

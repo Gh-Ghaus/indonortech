@@ -7,7 +7,7 @@ import TeamCTA from "../../components/about/TeamCTA";
 
 export default function AboutPage() {
   return (
-    <main className="flex flex-col gap-28">
+    <main className="overflow-x-hidden">
       <AboutHero />
       <CompanyIntro />
       <StatsSection />

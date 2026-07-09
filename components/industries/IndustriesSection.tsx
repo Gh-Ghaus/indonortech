@@ -1,12 +1,12 @@
 import IndustryCard from "./IndustryCard"
 
 const industries = [
-  { title: "Telecom", image: "/images/telecom.jpeg" },
+  { title: "Energy & Utilities", image: "/images/tech2.jpg" },
   { title: "Financial Services", image: "/images/finance.jpeg" },
   { title: "Retail & eCommerce", image: "/images/ecommerce.jpeg" },
   { title: "Healthcare", image: "/images/healthcare.jpeg" },
-  { title: "Automotive", image: "/images/automotive.jpeg" },
-  { title: "Education & eLearning", image: "/images/education.jpeg" },
+  { title: "Manufacturing", image: "/images/automotive.jpeg" },
+  { title: "Public Services & Education", image: "/images/education.jpeg" },
 ]
 
 export default function IndustriesSection() {
@@ -19,8 +19,8 @@ export default function IndustriesSection() {
         </h2>
 
         <p className="text-muted-foreground mt-4 max-w-2xl mx-auto">
-          Our engineering teams bring deep expertise across industries
-          helping companies build innovative digital platforms.
+          Our consulting and engineering teams work with organizations in
+          Norway and Europe to build secure, scalable digital capabilities.
         </p>
       </div>
 

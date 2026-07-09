@@ -3,39 +3,39 @@ import ServiceCard from "./ServiceCard";
 
 const services = [
   {
-    title: "Software Development",
+    title: "Custom Software Engineering",
     description:
-      "Custom software engineering tailored to your business goals.",
+      "Design and delivery of web platforms and enterprise tools tailored to Nordic business requirements.",
     icon: <Code />,
   },
   {
-    title: "AI Solutions",
+    title: "AI & Data Solutions",
     description:
-      "Machine learning, LLM integration, and intelligent automation.",
+      "Practical AI adoption, LLM integrations, and workflow automation with strong governance.",
     icon: <Sparkles />,
   },
   {
-    title: "Mobile Development",
+    title: "Product Engineering",
     description:
-      "Cross-platform and native mobile apps for iOS and Android.",
+      "End-to-end engineering for customer portals, internal apps, and digital product modernization.",
     icon: <Smartphone />,
   },
   {
-    title: "Cloud Solutions",
+    title: "Cloud & Platform Ops",
     description:
-      "Scalable cloud architecture and DevOps automation.",
+      "Cloud architecture, platform reliability, and DevOps automation for secure scaling.",
     icon: <Cloud />,
   },
   {
-    title: "Staff Augmentation",
+    title: "Team Extension",
     description:
-      "Extend your engineering team with experienced developers.",
+      "Flexible India-based engineering capacity aligned with Norwegian consulting and delivery standards.",
     icon: <Users />,
   },
   {
     title: "Digital Transformation",
     description:
-      "Modernize legacy systems and accelerate innovation.",
+      "Legacy modernization, process digitization, and change support for long-term business impact.",
     icon: <Cpu />,
   },
 ];
@@ -50,8 +50,8 @@ export default function ServicesSection() {
         </h2>
 
         <p className="text-muted-foreground mt-4 max-w-2xl mx-auto">
-          Our team provides full-cycle software development services
-          from idea to deployment and long-term support.
+          We provide full-cycle consulting and engineering services for teams
+          operating in Norway and across the wider Nordic region.
         </p>
       </div>
 

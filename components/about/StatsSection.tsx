@@ -1,10 +1,10 @@
 export default function StatsSection() {
 
   const stats = [
-    { number: "500+", label: "Engineers" },
-    { number: "17+", label: "Years Experience" },
-    { number: "20+", label: "Countries Served" },
-    { number: "300+", label: "Projects Delivered" },
+    { number: "2", label: "Core Regions: India & Norway" },
+    { number: "10+", label: "Years Combined Experience" },
+    { number: "6", label: "Industries Supported" },
+    { number: "100%", label: "Client-Focused Delivery" },
   ];
 
   return (

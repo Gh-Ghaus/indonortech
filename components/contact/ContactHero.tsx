@@ -4,8 +4,8 @@ export default function ContactHero() {
   return (
     <section className="relative h-[85vh] flex items-center justify-center text-center overflow-hidden">
       <Image
-        src="/images/contact-bg1.jpg"
-        alt="contact"
+        src="/images/about-bg1.jpg"
+        alt="Norway business skyline"
         fill
         priority
         className="object-cover"
@@ -19,12 +19,14 @@ export default function ContactHero() {
             GET IN TOUCH
           </p>
           <h1 className="text-6xl lg:text-7xl font-bold leading-tight">
-            Let's Connect
+            Talk to Our Norway + India Team
           </h1>
         </div>
 
         <p className="text-lg lg:text-xl opacity-95 max-w-2xl mx-auto leading-relaxed">
-          Have a project in mind? We'd love to hear about it. Let's discuss how we can help you build innovative digital solutions that drive real results.
+          Planning your next platform or modernization initiative? Let&apos;s discuss
+          how our consultants and engineers can support delivery across Norway
+          and international markets.
         </p>
 
         <div className="pt-4">

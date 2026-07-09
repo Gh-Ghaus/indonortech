@@ -1,10 +1,10 @@
 const industries = [
-  "Telecom",
+  "Energy & Utilities",
   "Retail & eCommerce",
-  "Automotive",
+  "Manufacturing",
   "Financial Services",
   "Healthcare",
-  "Software & Hi-Tech",
+  "Public Sector & Smart Cities",
 ];
 
 export default function IndustrySection() {

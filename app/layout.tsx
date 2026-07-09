@@ -3,7 +3,6 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 import { Geist } from "next/font/google";
-import { cn } from "@/lib/utils";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 import { ThemeProvider } from "next-themes";
@@ -11,9 +10,9 @@ import { ThemeProvider } from "next-themes";
 const geist = Geist({subsets:['latin'],variable:'--font-sans'});
 
 export const metadata: Metadata = {
-  title: "IndonorTech | Enterprise Technology Experts",
+  title: "IndonorTech | Norway-India Technology Consultants",
   description:
-    "We build enterprise-ready applications, cloud solutions, and AI systems.",
+    "Consulting and engineering services from Norway and India for digital platforms, cloud, and AI delivery.",
 };
 
 export default function RootLayout({

@@ -14,12 +14,13 @@ export default function ContactCTA() {
             READY TO START?
           </p>
           <h2 className="text-5xl lg:text-6xl font-bold mb-4 leading-tight">
-            Let's build something amazing
+            Build with a Norway-India Delivery Model
           </h2>
         </div>
 
         <p className="text-lg lg:text-xl opacity-95 max-w-2xl mx-auto leading-relaxed">
-          Our team is ready to collaborate with you. Talk to our experts and turn your vision into reality.
+          Work with our consultants in Norway and engineering teams in India
+          to deliver outcomes faster and with confidence.
         </p>
 
         <div className="pt-6">

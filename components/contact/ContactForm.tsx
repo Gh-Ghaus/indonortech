@@ -30,7 +30,7 @@ export default function ContactForm() {
         Send us a message
       </h2>
       <p className="text-gray-600 mb-8">
-        We'll respond within 24 hours
+        We usually respond within one business day
       </p>
 
       <form onSubmit={handleSubmit} className="flex flex-col gap-5">

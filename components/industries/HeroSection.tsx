@@ -17,12 +17,12 @@ export default function HeroSection() {
       <div className="relative z-10 max-w-3xl px-6 text-white">
 
         <h1 className="text-5xl md:text-6xl font-bold">
-          Industries We Serve
+          Industries We Support in Norway
         </h1>
 
         <p className="mt-6 text-lg opacity-90">
-          We help companies across multiple industries innovate,
-          scale, and transform their businesses with technology.
+          We help organizations modernize operations with digital solutions
+          adapted to Norwegian market realities and compliance expectations.
         </p>
 
       </div>

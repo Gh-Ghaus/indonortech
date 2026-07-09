@@ -16,12 +16,12 @@ export default function CTASection() {
       <div className="relative max-w-3xl mx-auto px-6">
 
         <h2 className="text-4xl md:text-5xl font-bold">
-          Let’s Build the Future Together
+          Build Your Next Nordic Success Story
         </h2>
 
         <p className="mt-4 opacity-90">
-          Partner with our team to build innovative technology solutions
-          tailored to your industry.
+          Collaborate with our Norway and India team to build digital
+          platforms that align with your industry and growth goals.
         </p>
 
         <button className="mt-8 px-8 py-3 bg-primary rounded-full hover:bg-primary/90 transition">

@@ -4,7 +4,7 @@ export default function TeamCTA() {
 
       <div
         className="absolute inset-0 bg-cover bg-center"
-        style={{ backgroundImage: "url('/images/office1.png')" }}
+        style={{ backgroundImage: "url('/images/about-bg1.jpg')" }}
       />
 
       <div className="absolute inset-0 bg-black/30" />
@@ -12,16 +12,16 @@ export default function TeamCTA() {
       <div className="relative max-w-3xl mx-auto px-6">
 
         <h2 className="text-4xl font-bold mb-6">
-          Join Our Team
+          Join Our India-Norway Team
         </h2>
 
         <p className="opacity-90 mb-8">
-          We are always looking for talented engineers passionate about
-          building world-class software.
+          We are looking for consultants, engineers, and delivery partners
+          who enjoy building impactful digital products for Nordic clients.
         </p>
 
         <button className="px-8 py-3 rounded-full bg-primary text-white hover:opacity-90">
-          View Careers
+          Explore Opportunities
         </button>
 
       </div>

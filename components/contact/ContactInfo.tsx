@@ -4,18 +4,28 @@ export default function ContactInfo() {
   const contactItems = [
     {
       icon: MapPin,
-      title: "Address",
-      details: ["Friedrichstraße 171", "Berlin, Germany"]
+      title: "Norway Office",
+      details: ["Oslo Region, Norway"]
+    },
+    {
+      icon: MapPin,
+      title: "India Delivery Center",
+      details: ["New Delhi, India", "Pin Code: 110026"]
     },
     {
       icon: Phone,
-      title: "Phone",
-      details: ["+40 374 60 88 99"]
+      title: "Norway Mobile",
+      details: ["(+47) 414 416 28"]
+    },
+    {
+      icon: Phone,
+      title: "India Mobile",
+      details: ["(+91) 78998 76574"]
     },
     {
       icon: Mail,
       title: "Email",
-      details: ["contact@company.com"]
+      details: ["kaiynat.ashraf8@gmail.com"]
     }
   ];
 
@@ -26,7 +36,7 @@ export default function ContactInfo() {
           Get in Touch
         </h2>
         <p className="text-gray-600">
-          We're here to help and answer any questions
+          We are here to help with your Norway and cross-border delivery goals.
         </p>
       </div>
 
@@ -62,10 +72,10 @@ export default function ContactInfo() {
         </div>
         <p className="text-gray-700 text-sm leading-relaxed">
           <span className="font-medium">Monday – Friday:</span><br/>
-          9:00 AM – 6:00 PM (UTC+1)
+          9:00 AM – 5:00 PM (CET/CEST)
         </p>
         <p className="text-gray-600 text-sm mt-3">
-          For urgent matters, please call us during business hours
+          We respond quickly across Norway and India working hours.
         </p>
       </div>
     </div>

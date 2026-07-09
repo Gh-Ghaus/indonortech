@@ -10,13 +10,14 @@ export default function CompanyIntro() {
         </h2>
 
         <p className="text-muted-foreground mb-4">
-          We are a global technology company delivering high-quality
-          software solutions across web, mobile, cloud and AI.
+          IndonorTech is a cross-border consulting company with delivery teams
+          in India and business consulting presence in Norway.
         </p>
 
         <p className="text-muted-foreground">
-          Our engineers help companies build scalable digital products,
-          automate processes, and accelerate digital transformation.
+          We combine Nordic business understanding with strong engineering
+          execution to help clients modernize platforms, automate workflows,
+          and launch secure digital services faster.
         </p>
       </div>
 

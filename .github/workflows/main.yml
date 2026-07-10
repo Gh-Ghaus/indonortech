@@ -1,7 +1,9 @@
-name: Next.js CI/CD
+name: Next.js CI
 
 on:
   push:
+    branches: [development]
+  pull_request:
     branches: [development]
 
 jobs:
@@ -27,38 +29,3 @@ jobs:
 
       - name: Build project
         run: npm run build
-
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v5
-
-      - name: Setup SSH
-        run: |
-          mkdir -p ~/.ssh
-          echo "${{ secrets.EC2_SSH_KEY }}" | tr -d '\r' > ~/.ssh/id_rsa
-          chmod 600 ~/.ssh/id_rsa
-          chmod 700 ~/.ssh
-
-          # Validate host reachability first for clearer diagnostics.
-          if ! timeout 15 bash -c "</dev/tcp/54.254.191.63/22" 2>/dev/null; then
-            echo "ERROR: Cannot reach 54.254.191.63:22 from GitHub runner."
-            echo "Check EC2 Security Group inbound rule for SSH (22) and network ACLs."
-            exit 1
-          fi
-
-          # Capture host keys when possible; fallback avoids flaky keyscan hard-fail.
-          ssh-keyscan -T 15 -H 54.254.191.63 >> ~/.ssh/known_hosts 2>/dev/null || true
-          touch ~/.ssh/known_hosts
-          chmod 644 ~/.ssh/known_hosts
-
-      - name: Fix permissions (one time)
-        run: |
-          ssh -o StrictHostKeyChecking=no ubuntu@54.254.191.63 "sudo chown -R ubuntu:ubuntu /home/ubuntu/app"
-
-      - name: Deploy
-        run: |
-          ssh -o StrictHostKeyChecking=no ubuntu@54.254.191.63 "cd /home/ubuntu/app && git pull origin development && npm ci && npm run build"

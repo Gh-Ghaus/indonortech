@@ -9,7 +9,7 @@ export default function ContactPage() {
     <main className="flex flex-col">
       <ContactHero />
       
-      <div className="py-24 lg:py-32 bg-gradient-to-b from-white to-gray-50">
+      <div className="py-24 lg:py-32 bg-gradient-to-b from-background to-muted/50">
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
             

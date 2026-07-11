@@ -24,12 +24,15 @@ export default function ContactForm() {
     setTimeout(() => setIsSubmitting(false), 1000);
   };
 
+  const fieldClass =
+    "w-full px-4 py-3 border border-input rounded-lg bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:border-transparent transition-all";
+
   return (
-    <div className="bg-white p-8 rounded-2xl border border-gray-200 shadow-lg">
-      <h2 className="text-2xl lg:text-3xl font-bold mb-2">
+    <div className="bg-card p-8 rounded-2xl border border-border shadow-lg">
+      <h2 className="text-2xl lg:text-3xl font-bold mb-2 text-foreground">
         Send us a message
       </h2>
-      <p className="text-gray-600 mb-8">
+      <p className="text-muted-foreground mb-8">
         We usually respond within one business day
       </p>
 
@@ -42,7 +45,7 @@ export default function ContactForm() {
             value={formData.name}
             onChange={handleChange}
             required
-            className="w-full px-4 py-3 border border-gray-300 rounded-lg bg-white focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all"
+            className={fieldClass}
           />
 
           <input
@@ -52,7 +55,7 @@ export default function ContactForm() {
             value={formData.email}
             onChange={handleChange}
             required
-            className="w-full px-4 py-3 border border-gray-300 rounded-lg bg-white focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all"
+            className={fieldClass}
           />
         </div>
 
@@ -63,7 +66,7 @@ export default function ContactForm() {
             placeholder="Company Name (Optional)"
             value={formData.company}
             onChange={handleChange}
-            className="w-full px-4 py-3 border border-gray-300 rounded-lg bg-white focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all"
+            className={fieldClass}
           />
 
           <input
@@ -73,7 +76,7 @@ export default function ContactForm() {
             value={formData.subject}
             onChange={handleChange}
             required
-            className="w-full px-4 py-3 border border-gray-300 rounded-lg bg-white focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all"
+            className={fieldClass}
           />
         </div>
 
@@ -84,13 +87,13 @@ export default function ContactForm() {
           value={formData.message}
           onChange={handleChange}
           required
-          className="w-full px-4 py-3 border border-gray-300 rounded-lg bg-white focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all resize-none"
+          className={`${fieldClass} resize-none`}
         />
 
         <button
           type="submit"
           disabled={isSubmitting}
-          className="mt-2 bg-primary text-white py-3 rounded-lg font-semibold hover:bg-primary/90 transition-colors duration-300 disabled:opacity-70"
+          className="mt-2 bg-primary text-primary-foreground py-3 rounded-lg font-semibold hover:bg-primary/90 transition-colors duration-300 disabled:opacity-70"
         >
           {isSubmitting ? 'Sending...' : 'Send Message'}
         </button>

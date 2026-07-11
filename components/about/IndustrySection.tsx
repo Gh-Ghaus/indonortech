@@ -20,7 +20,7 @@ export default function IndustrySection() {
         {industries.map((item, index) => (
           <div
             key={index}
-            className="p-8 rounded-xl border bg-background hover:shadow-lg transition"
+            className="p-8 rounded-xl border border-border bg-card text-card-foreground hover:border-primary/40 hover:shadow-lg transition"
           >
             {item}
           </div>

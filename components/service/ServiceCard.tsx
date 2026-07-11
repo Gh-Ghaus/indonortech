@@ -12,8 +12,9 @@ export default function ServiceCard({ icon, title, description }: Props) {
     group
     p-8
     rounded-2xl
-    border
-    bg-background
+    border border-border
+    bg-card text-card-foreground
+    hover:border-primary/30
     hover:shadow-xl
     hover:-translate-y-2
     transition-all duration-300
@@ -27,7 +28,7 @@ export default function ServiceCard({ icon, title, description }: Props) {
       text-primary
       mb-5
       group-hover:bg-primary
-      group-hover:text-white
+      group-hover:text-primary-foreground
       transition
       ">
         {icon}

@@ -22,11 +22,11 @@ export default function Navbar() {
           <Link href="/about" className="flex items-center">
             <Image
               src="/images/logo-removebg-preview.png"
-              alt="logo"
+              alt="IndonorTech"
               width={140}
               height={48}
               priority
-              className="h-auto w-auto object-contain md:w-[160px]"
+              className="h-auto w-auto object-contain md:w-[160px] dark:invert dark:brightness-110"
             />
           </Link>
 
@@ -59,7 +59,7 @@ export default function Navbar() {
                 href={item.href}
                 className={`text-sm font-medium whitespace-nowrap px-3 py-1 rounded-full transition-colors ${
                   pathname === item.href
-                    ? "bg-primary text-white"
+                    ? "bg-primary text-primary-foreground"
                     : "text-foreground hover:bg-primary/10"
                 }`}
               >

@@ -27,7 +27,7 @@ export default function HeroSection() {
           cloud operations with confidence.
         </p>
 
-        <button className="mt-8 px-8 py-3 rounded-full bg-primary hover:bg-primary/90 transition text-white">
+        <button className="mt-8 px-8 py-3 rounded-full bg-primary hover:bg-primary/90 transition text-primary-foreground">
           Discuss Your Roadmap
         </button>
 

@@ -24,7 +24,7 @@ export default function CTASection() {
           deliver reliable, scalable, and business-ready technology.
         </p>
 
-        <button className="mt-8 px-8 py-3 bg-primary rounded-full hover:bg-primary/90 transition">
+        <button className="mt-8 px-8 py-3 bg-primary text-primary-foreground rounded-full hover:bg-primary/90 transition">
           Let&apos;s Talk
         </button>
 

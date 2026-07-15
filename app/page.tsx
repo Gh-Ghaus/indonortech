@@ -56,10 +56,6 @@ export default function Home() {
         <div className="relative z-10 flex h-full items-center">
           <div className="mx-auto max-w-7xl px-6">
 
-            <span className="rounded-full bg-blue-600 px-5 py-2 text-sm text-white">
-              Trusted Technology Partner for Norwegian Businesses
-            </span>
-
             <h1 className="mt-8 max-w-4xl text-6xl font-bold leading-tight text-white">
               Engineering Digital Excellence
             </h1>
@@ -213,124 +209,7 @@ export default function Home() {
         </div>
 
       </section>
-      <section className="bg-gray-50 py-24">
-  <div className="mx-auto max-w-7xl px-6">
-
-    <div className="grid gap-16 lg:grid-cols-2">
-
-      {/* Left */}
-
-      <div>
-
-        <span className="rounded-full bg-blue-100 px-4 py-2 text-blue-700 font-semibold">
-          Contact IndonorTech
-        </span>
-
-        <h2 className="mt-6 text-5xl font-bold">
-          Let's Discuss Your Next Digital Project
-        </h2>
-
-        <p className="mt-6 text-lg text-gray-600 leading-8">
-          Whether you're looking for a trusted software development partner,
-          cloud transformation, DevOps expertise, AI solutions, or dedicated
-          engineering teams, our specialists are ready to help.
-        </p>
-
-        <div className="mt-10 space-y-6">
-
-          <div>
-            <h3 className="font-semibold text-xl">📧 Email</h3>
-            <p className="text-gray-600">
-              business@indonortech.com
-            </p>
-          </div>
-
-          <div>
-            <h3 className="font-semibold text-xl">🕒 Business Hours</h3>
-            <p className="text-gray-600">
-              Monday – Friday
-              <br />
-              09:00 – 18:00 CET
-            </p>
-          </div>
-
-          <div>
-            <h3 className="font-semibold text-xl">🌍 Delivery</h3>
-            <p className="text-gray-600">
-              Norway • Europe • Global
-            </p>
-          </div>
-
-        </div>
-
-      </div>
-
-      {/* Right */}
-
-      <div className="rounded-2xl bg-white p-10 shadow-xl">
-
-        <h3 className="text-3xl font-bold mb-8">
-          Request a Consultation
-        </h3>
-
-        <form className="space-y-6">
-
-          <input
-            type="text"
-            placeholder="Full Name"
-            className="w-full rounded-lg border p-4"
-          />
-
-          <input
-            type="email"
-            placeholder="Business Email"
-            className="w-full rounded-lg border p-4"
-          />
-
-          <input
-            type="text"
-            placeholder="Company"
-            className="w-full rounded-lg border p-4"
-          />
-
-          <input
-            type="text"
-            placeholder="Country"
-            className="w-full rounded-lg border p-4"
-          />
-
-          <select
-            className="w-full rounded-lg border p-4"
-          >
-            <option>Select Service</option>
-            <option>Software Development</option>
-            <option>Cloud Solutions</option>
-            <option>DevOps</option>
-            <option>Artificial Intelligence</option>
-            <option>Cybersecurity</option>
-            <option>IT Consulting</option>
-          </select>
-
-          <textarea
-            rows={6}
-            placeholder="Tell us about your project..."
-            className="w-full rounded-lg border p-4"
-          />
-
-          <button
-            className="w-full rounded-lg bg-blue-700 py-4 text-white font-semibold hover:bg-blue-800"
-          >
-            Send Inquiry
-          </button>
-
-        </form>
-
-      </div>
-
-    </div>
-
-  </div>
-</section>
+      
 
     </main>
   );

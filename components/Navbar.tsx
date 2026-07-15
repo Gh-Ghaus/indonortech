@@ -19,7 +19,7 @@ export default function Navbar() {
     <header className="fixed top-0 left-0 z-50 w-full">
       <div className="mx-auto max-w-[95%] px-4 pt-4">
         <nav className="flex items-center justify-between rounded-full px-5 md:px-8 py-2 bg-background/80 backdrop-blur-md shadow-sm transition-all duration-300 ease-in-out">
-          <Link href="/about" className="flex items-center">
+          <Link href="/" className="flex items-center">
             <Image
               src="/images/logo-removebg-preview.png"
               alt="logo"

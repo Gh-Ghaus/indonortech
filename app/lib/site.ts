@@ -1,0 +1,124 @@
+export const siteConfig = {
+  name: "IndonorTech",
+  legalName: "Indonor Technologies Private Limited",
+  shortName: "Indonor",
+  tagline: "Norway–India Technology Consulting",
+  description:
+    "IndonorTech (Indonor Technologies Private Limited) is a Norway–India technology consulting company delivering digital platforms, cloud, AI, and engineering services for Nordic and international businesses.",
+  url: process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "") || "https://indonortech.com",
+  locale: "en_US",
+  email: "kaiynat.ashraf8@gmail.com",
+  phoneNorway: "+47 414 416 28",
+  phoneIndia: "+91 78998 76574",
+  keywords: [
+    "IndonorTech",
+    "Indonor",
+    "Indo",
+    "Indonor Technologies",
+    "Indonor Technologies Private Limited",
+    "Indonor Tech",
+    "Indonortech",
+    "Norway India consulting",
+    "Norway India technology",
+    "Nordic technology consultants",
+    "India Norway software consulting",
+    "Oslo technology consulting",
+    "cross-border IT consulting",
+    "digital platform consulting Norway",
+    "cloud and AI consulting Nordics",
+  ],
+  sameAs: [] as string[],
+  addresses: {
+    norway: {
+      locality: "Oslo",
+      country: "NO",
+      countryName: "Norway",
+    },
+    india: {
+      locality: "New Delhi",
+      postalCode: "110026",
+      country: "IN",
+      countryName: "India",
+    },
+  },
+} as const;
+
+export type PageSeo = {
+  title: string;
+  description: string;
+  path: string;
+  keywords?: string[];
+};
+
+export const pageSeo = {
+  home: {
+    title: "IndonorTech | Indonor Technologies Private Limited",
+    description:
+      "Official site of IndonorTech (Indonor Technologies Private Limited) — Norway–India technology consultants for digital platforms, cloud, AI, and engineering delivery.",
+    path: "/",
+  },
+  services: {
+    title: "Services | IndonorTech Consulting & Engineering",
+    description:
+      "Technology consulting services from IndonorTech: digital platforms, cloud, AI, and engineering delivery across Norway and India.",
+    path: "/services",
+  },
+  industries: {
+    title: "Industries | IndonorTech Nordic Technology Partners",
+    description:
+      "IndonorTech serves energy, retail, manufacturing, finance, healthcare, and public sector clients across Norway and the Nordics.",
+    path: "/industries",
+  },
+  contact: {
+    title: "Contact IndonorTech | Norway & India Offices",
+    description:
+      "Contact Indonor Technologies Private Limited (IndonorTech) in Oslo, Norway and New Delhi, India for consulting and delivery partnerships.",
+    path: "/contact",
+  },
+} as const satisfies Record<string, PageSeo>;
+
+export function absoluteUrl(path = "/") {
+  const normalized = path.startsWith("/") ? path : `/${path}`;
+  return `${siteConfig.url}${normalized === "/" ? "" : normalized}`;
+}
+
+export function buildMetadata({
+  title,
+  description,
+  path,
+  keywords = [],
+}: PageSeo) {
+  const url = absoluteUrl(path);
+  const allKeywords = [...siteConfig.keywords, ...keywords];
+
+  return {
+    title,
+    description,
+    keywords: allKeywords,
+    alternates: {
+      canonical: url,
+    },
+    openGraph: {
+      title,
+      description,
+      url,
+      siteName: siteConfig.legalName,
+      locale: siteConfig.locale,
+      type: "website" as const,
+      images: [
+        {
+          url: absoluteUrl("/images/logo-removebg-preview.png"),
+          width: 1200,
+          height: 630,
+          alt: `${siteConfig.name} — ${siteConfig.legalName}`,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image" as const,
+      title,
+      description,
+      images: [absoluteUrl("/images/logo-removebg-preview.png")],
+    },
+  };
+}

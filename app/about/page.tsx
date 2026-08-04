@@ -1,18 +1,5 @@
-import AboutHero from "../../components/about/AboutHero";
-import CompanyIntro from "../../components/about/CompanyIntro";
-import IndustrySection from "../../components/about/IndustrySection";
-import StatsSection from "../../components/about/StatsSection";
-import TeamCTA from "../../components/about/TeamCTA";
-
+import { redirect } from "next/navigation";
 
 export default function AboutPage() {
-  return (
-    <main className="flex flex-col gap-28">
-      <AboutHero />
-      <CompanyIntro />
-      <StatsSection />
-      <IndustrySection />
-      <TeamCTA />
-    </main>
-  );
+  redirect("/");
 }

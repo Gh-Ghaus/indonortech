@@ -6,7 +6,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 const navItems = [
-  { name: "About", href: "/about" },
+  { name: "About", href: "/" },
   { name: "Industries", href: "/industries" },
   { name: "Services", href: "/services" },
   { name: "Contact", href: "/contact" },
@@ -19,10 +19,10 @@ export default function Navbar() {
     <header className="fixed top-0 left-0 z-50 w-full">
       <div className="mx-auto max-w-[95%] px-4 pt-4">
         <nav className="flex items-center justify-between rounded-full px-5 md:px-8 py-2 bg-background/80 backdrop-blur-md shadow-sm transition-all duration-300 ease-in-out">
-          <Link href="/about" className="flex items-center">
+          <Link href="/" className="flex items-center" aria-label="IndonorTech home">
             <Image
               src="/images/logo-removebg-preview.png"
-              alt="IndonorTech"
+              alt="IndonorTech — Indonor Technologies Private Limited"
               width={140}
               height={48}
               priority
@@ -36,7 +36,9 @@ export default function Navbar() {
                 key={item.name}
                 href={item.href}
                 className={`text-lg font-medium transition-colors ${
-                  pathname === item.href ? "text-primary" : "text-foreground hover:text-primary"
+                  pathname === item.href || (item.href === "/" && pathname === "/about")
+                    ? "text-primary"
+                    : "text-foreground hover:text-primary"
                 }`}
               >
                 {item.name}
@@ -58,7 +60,7 @@ export default function Navbar() {
                 key={item.name}
                 href={item.href}
                 className={`text-sm font-medium whitespace-nowrap px-3 py-1 rounded-full transition-colors ${
-                  pathname === item.href
+                  pathname === item.href || (item.href === "/" && pathname === "/about")
                     ? "bg-primary text-primary-foreground"
                     : "text-foreground hover:bg-primary/10"
                 }`}

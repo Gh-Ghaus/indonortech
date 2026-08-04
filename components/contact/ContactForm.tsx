@@ -1,9 +1,28 @@
 'use client';
 
-import { useState } from 'react';
+import { FormEvent, useState } from 'react';
+
+const MAX = {
+  name: 100,
+  email: 254,
+  company: 120,
+  subject: 160,
+  message: 4000,
+} as const;
+
+function isValidEmail(email: string) {
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+}
+
+function sanitize(value: string) {
+  return value.replace(/[<>]/g, '').trim();
+}
 
 export default function ContactForm() {
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [error, setError] = useState('');
+  const [success, setSuccess] = useState(false);
+  const [honeypot, setHoneypot] = useState('');
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -14,14 +33,52 @@ export default function ContactForm() {
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
+    const limit = MAX[name as keyof typeof MAX];
+    setFormData((prev) => ({
+      ...prev,
+      [name]: limit ? value.slice(0, limit) : value,
+    }));
   };
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setError('');
+    setSuccess(false);
+
+    // Bot trap — silently ignore automated fills
+    if (honeypot) {
+      setSuccess(true);
+      return;
+    }
+
+    const name = sanitize(formData.name);
+    const email = sanitize(formData.email);
+    const company = sanitize(formData.company);
+    const subject = sanitize(formData.subject);
+    const message = sanitize(formData.message);
+
+    if (!name || !email || !subject || !message) {
+      setError('Please complete all required fields.');
+      return;
+    }
+
+    if (!isValidEmail(email)) {
+      setError('Please enter a valid email address.');
+      return;
+    }
+
+    if (message.length < 10) {
+      setError('Please provide a bit more detail in your message.');
+      return;
+    }
+
     setIsSubmitting(true);
-    // Add form submission logic here
-    setTimeout(() => setIsSubmitting(false), 1000);
+    // Placeholder until a secure server endpoint is wired
+    setTimeout(() => {
+      setIsSubmitting(false);
+      setSuccess(true);
+      setFormData({ name: '', email: '', company: '', subject: '', message: '' });
+    }, 800);
   };
 
   const fieldClass =
@@ -36,7 +93,21 @@ export default function ContactForm() {
         We usually respond within one business day
       </p>
 
-      <form onSubmit={handleSubmit} className="flex flex-col gap-5">
+      <form onSubmit={handleSubmit} className="flex flex-col gap-5" noValidate>
+        {/* Honeypot for bots — keep visually hidden */}
+        <div className="absolute -left-[9999px] h-0 w-0 overflow-hidden" aria-hidden="true">
+          <label htmlFor="website">Website</label>
+          <input
+            id="website"
+            name="website"
+            type="text"
+            tabIndex={-1}
+            autoComplete="off"
+            value={honeypot}
+            onChange={(e) => setHoneypot(e.target.value)}
+          />
+        </div>
+
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <input
             type="text"
@@ -45,6 +116,8 @@ export default function ContactForm() {
             value={formData.name}
             onChange={handleChange}
             required
+            maxLength={MAX.name}
+            autoComplete="name"
             className={fieldClass}
           />
 
@@ -55,6 +128,9 @@ export default function ContactForm() {
             value={formData.email}
             onChange={handleChange}
             required
+            maxLength={MAX.email}
+            autoComplete="email"
+            inputMode="email"
             className={fieldClass}
           />
         </div>
@@ -66,6 +142,8 @@ export default function ContactForm() {
             placeholder="Company Name (Optional)"
             value={formData.company}
             onChange={handleChange}
+            maxLength={MAX.company}
+            autoComplete="organization"
             className={fieldClass}
           />
 
@@ -76,6 +154,7 @@ export default function ContactForm() {
             value={formData.subject}
             onChange={handleChange}
             required
+            maxLength={MAX.subject}
             className={fieldClass}
           />
         </div>
@@ -87,8 +166,20 @@ export default function ContactForm() {
           value={formData.message}
           onChange={handleChange}
           required
+          maxLength={MAX.message}
           className={`${fieldClass} resize-none`}
         />
+
+        {error ? (
+          <p className="text-sm text-destructive" role="alert">
+            {error}
+          </p>
+        ) : null}
+        {success ? (
+          <p className="text-sm text-primary" role="status">
+            Thanks — your message was received. We will get back to you soon.
+          </p>
+        ) : null}
 
         <button
           type="submit"

@@ -75,6 +75,17 @@ export const pageSeo = {
       "Contact Indonor Technologies Private Limited (IndonorTech) in Oslo, Norway and New Delhi, India for consulting and delivery partnerships.",
     path: "/contact",
   },
+  projects: {
+    title: "Client Projects | IndonorTech Delivery Portfolio",
+    description:
+      "Explore IndonorTech client projects with live URLs, delivery details, and demo video recordings from Norway–India consulting engagements.",
+    path: "/projects",
+    keywords: [
+      "IndonorTech projects",
+      "Indonor client work",
+      "Norway India case studies",
+    ],
+  },
 } as const satisfies Record<string, PageSeo>;
 
 export function absoluteUrl(path = "/") {
@@ -107,7 +118,7 @@ export function buildMetadata({
       type: "website" as const,
       images: [
         {
-          url: absoluteUrl("/images/logo-removebg-preview.png"),
+          url: absoluteUrl("/images/logo.png"),
           width: 1200,
           height: 630,
           alt: `${siteConfig.name} — ${siteConfig.legalName}`,
@@ -118,7 +129,7 @@ export function buildMetadata({
       card: "summary_large_image" as const,
       title,
       description,
-      images: [absoluteUrl("/images/logo-removebg-preview.png")],
+      images: [absoluteUrl("/images/logo.png")],
     },
   };
 }

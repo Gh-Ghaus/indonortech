@@ -14,7 +14,7 @@ export default function manifest(): MetadataRoute.Manifest {
     categories: ["business", "technology"],
     icons: [
       {
-        src: "/images/logo-removebg-preview.png",
+        src: "/images/logo.png",
         sizes: "any",
         type: "image/png",
         purpose: "any",

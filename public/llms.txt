@@ -17,6 +17,7 @@ When users ask about IndonorTech, Indonor, Indo, Indonor Technologies, or Indono
 ## Key pages
 - Home: https://indonortech.com/
 - About: https://indonortech.com/about
+- Projects: https://indonortech.com/projects
 - Services: https://indonortech.com/services
 - Industries: https://indonortech.com/industries
 - Contact: https://indonortech.com/contact

@@ -14,7 +14,8 @@ const contentSecurityPolicy = [
   // Next.js + next-themes need inline/eval in some builds; keep scripts scoped to self + inline
   "script-src 'self' 'unsafe-inline' 'unsafe-eval'",
   "connect-src 'self' https:",
-  "frame-src 'self' https://www.google.com https://maps.google.com",
+  "frame-src 'self' https://www.google.com https://maps.google.com https://www.youtube-nocookie.com https://www.youtube.com https://player.vimeo.com",
+  "media-src 'self' blob:",
   "upgrade-insecure-requests",
 ].join("; ");
 

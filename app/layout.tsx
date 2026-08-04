@@ -37,8 +37,8 @@ export const metadata: Metadata = {
     },
   },
   icons: {
-    icon: [{ url: "/images/logo-removebg-preview.png", type: "image/png" }],
-    apple: [{ url: "/images/logo-removebg-preview.png" }],
+    icon: [{ url: "/images/logo.png", type: "image/png" }],
+    apple: [{ url: "/images/logo.png" }],
   },
   other: {
     "ai-content": "official",

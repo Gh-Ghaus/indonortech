@@ -54,13 +54,8 @@ jobs:
 
       - name: Build project
         run: npm run build
+
   info:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Output GitHub Context
-        run: |
-          echo "GitHub Context:"
-          echo "${{ toJson(github) }}"
     needs: build
     runs-on: ubuntu-latest
 
@@ -85,14 +80,20 @@ jobs:
       - name: Build project
         run: npm run build
 
+      - name: Output GitHub Context
+        run: |
+          echo "GitHub Context:"
+          echo '${{ toJson(github) }}'
+
       - name: Show project info
         run: |
           echo "Project Name: $(node -p "require('./package.json').name")"
           echo "Project Version: $(node -p "require('./package.json').version")"
           echo "Build Directory Contents:"
           ls -la .next
+
   deploy:
-    needs: [test, info, build]
+    needs: [test, build, info]
     runs-on: ubuntu-latest
 
     steps:

@@ -1,7 +1,7 @@
 name: Next.js CI
 
 on:
-  push:
+  [push, workflow_dispatch]
     branches:
       - development
   pull_request:

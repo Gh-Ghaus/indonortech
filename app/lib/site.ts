@@ -57,6 +57,12 @@ export const pageSeo = {
       "Official site of IndonorTech (Indonor Technologies Private Limited) — Norway–India technology consultants for digital platforms, cloud, AI, and engineering delivery.",
     path: "/",
   },
+  about: {
+    title: "About IndonorTech | Indonor Technologies Private Limited",
+    description:
+      "Learn about IndonorTech — Indonor Technologies Private Limited — a cross-border consulting team from India and Norway serving Nordic and international clients.",
+    path: "/about",
+  },
   services: {
     title: "Services | IndonorTech Consulting & Engineering",
     description:

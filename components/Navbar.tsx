@@ -6,7 +6,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 const navItems = [
-  { name: "About", href: "/" },
+  { name: "About", href: "/about" },
   { name: "Projects", href: "/projects" },
   { name: "Industries", href: "/industries" },
   { name: "Services", href: "/services" },
@@ -20,7 +20,6 @@ export default function Navbar() {
     <header className="fixed top-0 left-0 z-50 w-full">
       <div className="mx-auto max-w-[95%] px-4 pt-4">
         <nav className="flex items-center justify-between rounded-full px-5 md:px-8 py-2 bg-background/80 backdrop-blur-md shadow-sm transition-all duration-300 ease-in-out">
-          {/* Navbar: logo image / icon only */}
           <BrandLogo variant="mark" priority />
 
           <div className="hidden md:flex items-center gap-10">
@@ -29,7 +28,7 @@ export default function Navbar() {
                 key={item.name}
                 href={item.href}
                 className={`text-lg font-medium transition-colors ${
-                  pathname === item.href || (item.href === "/" && pathname === "/about")
+                  pathname === item.href
                     ? "text-primary"
                     : "text-foreground hover:text-primary"
                 }`}
@@ -53,7 +52,7 @@ export default function Navbar() {
                 key={item.name}
                 href={item.href}
                 className={`text-sm font-medium whitespace-nowrap px-3 py-1 rounded-full transition-colors ${
-                  pathname === item.href || (item.href === "/" && pathname === "/about")
+                  pathname === item.href
                     ? "bg-primary text-primary-foreground"
                     : "text-foreground hover:bg-primary/10"
                 }`}

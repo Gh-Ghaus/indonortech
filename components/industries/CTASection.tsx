@@ -24,7 +24,7 @@ export default function CTASection() {
           platforms that align with your industry and growth goals.
         </p>
 
-        <button className="mt-8 px-8 py-3 bg-primary rounded-full hover:bg-primary/90 transition">
+        <button className="mt-8 px-8 py-3 bg-primary text-primary-foreground rounded-full hover:bg-primary/90 transition">
           Start Your Project
         </button>
 

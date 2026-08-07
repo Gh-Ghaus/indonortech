@@ -16,7 +16,7 @@ export default function Hero() {
       <div className="absolute inset-0 bg-gradient-to-b from-black/65 via-black/55 to-black/60" />
 
       <div className="relative z-10 max-w-4xl">
-        <p className="text-primary font-semibold tracking-wide mb-3">
+        <p className="text-brand-glow font-semibold tracking-wide mb-3">
           INDIA + NORWAY CONSULTING PARTNERSHIP
         </p>
 
@@ -32,7 +32,7 @@ export default function Hero() {
         <div className="mt-8">
           <Link
             href="/contact"
-            className="inline-block rounded-full bg-primary px-7 py-3 text-white font-medium hover:bg-primary/90 transition-colors"
+            className="inline-block rounded-full bg-primary px-7 py-3 text-primary-foreground font-medium hover:bg-primary/90 transition-colors"
           >
             Book a Consultation
           </Link>

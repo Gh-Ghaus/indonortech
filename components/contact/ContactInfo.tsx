@@ -32,10 +32,10 @@ export default function ContactInfo() {
   return (
     <div className="space-y-8">
       <div>
-        <h2 className="text-3xl font-bold mb-2">
+        <h2 className="text-3xl font-bold mb-2 text-foreground">
           Get in Touch
         </h2>
-        <p className="text-gray-600">
+        <p className="text-muted-foreground">
           We are here to help with your Norway and cross-border delivery goals.
         </p>
       </div>
@@ -49,11 +49,11 @@ export default function ContactInfo() {
                 <IconComponent className="text-primary w-6 h-6" />
               </div>
               <div>
-                <h3 className="font-semibold text-gray-900 mb-1">
+                <h3 className="font-semibold text-foreground mb-1">
                   {item.title}
                 </h3>
                 {item.details.map((detail, idx) => (
-                  <p key={idx} className="text-gray-600 text-sm">
+                  <p key={idx} className="text-muted-foreground text-sm">
                     {detail}
                   </p>
                 ))}
@@ -63,18 +63,18 @@ export default function ContactInfo() {
         })}
       </div>
 
-      <div className="p-6 bg-gradient-to-br from-gray-50 to-gray-100 rounded-2xl border border-gray-200 mt-8">
+      <div className="p-6 bg-gradient-to-br from-muted to-secondary rounded-2xl border border-border mt-8">
         <div className="flex gap-3 items-start mb-3">
           <Clock className="text-primary w-5 h-5 flex-shrink-0 mt-0.5" />
-          <h3 className="font-semibold text-gray-900 text-lg">
+          <h3 className="font-semibold text-foreground text-lg">
             Business Hours
           </h3>
         </div>
-        <p className="text-gray-700 text-sm leading-relaxed">
+        <p className="text-foreground/80 text-sm leading-relaxed">
           <span className="font-medium">Monday – Friday:</span><br/>
           9:00 AM – 5:00 PM (CET/CEST)
         </p>
-        <p className="text-gray-600 text-sm mt-3">
+        <p className="text-muted-foreground text-sm mt-3">
           We respond quickly across Norway and India working hours.
         </p>
       </div>

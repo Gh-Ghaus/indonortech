@@ -15,7 +15,7 @@ export default function ContactHero() {
 
       <div className="relative text-white max-w-4xl px-6 space-y-6">
         <div>
-          <p className="text-primary font-semibold text-lg mb-3 tracking-wide">
+          <p className="text-brand-glow font-semibold text-lg mb-3 tracking-wide">
             GET IN TOUCH
           </p>
           <h1 className="text-6xl lg:text-7xl font-bold leading-tight">
@@ -30,7 +30,7 @@ export default function ContactHero() {
         </p>
 
         <div className="pt-4">
-          <button className="px-8 py-3 bg-primary text-white rounded-lg font-semibold hover:bg-primary/90 transition-colors duration-300">
+          <button className="px-8 py-3 bg-primary text-primary-foreground rounded-lg font-semibold hover:bg-primary/90 transition-colors duration-300">
             Start a Conversation
           </button>
         </div>

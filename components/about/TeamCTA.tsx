@@ -20,7 +20,7 @@ export default function TeamCTA() {
           who enjoy building impactful digital products for Nordic clients.
         </p>
 
-        <button className="px-8 py-3 rounded-full bg-primary text-white hover:opacity-90">
+        <button className="px-8 py-3 rounded-full bg-primary text-primary-foreground hover:opacity-90">
           Explore Opportunities
         </button>
 

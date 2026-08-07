@@ -10,7 +10,7 @@ export default function ContactCTA() {
 
       <div className="relative max-w-4xl mx-auto px-6 space-y-6">
         <div>
-          <p className="text-primary font-semibold text-lg mb-3 tracking-wide">
+          <p className="text-brand-glow font-semibold text-lg mb-3 tracking-wide">
             READY TO START?
           </p>
           <h2 className="text-5xl lg:text-6xl font-bold mb-4 leading-tight">
@@ -24,7 +24,7 @@ export default function ContactCTA() {
         </p>
 
         <div className="pt-6">
-          <button className="px-8 py-3 rounded-lg bg-primary text-white font-semibold hover:bg-primary/90 transition-colors duration-300 shadow-lg hover:shadow-xl">
+          <button className="px-8 py-3 rounded-lg bg-primary text-primary-foreground font-semibold hover:bg-primary/90 transition-colors duration-300 shadow-lg hover:shadow-xl">
             Start Your Project
           </button>
         </div>

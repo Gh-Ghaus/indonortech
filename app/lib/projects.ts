@@ -28,54 +28,67 @@ export type ClientProject = {
  */
 export const clientProjects: ClientProject[] = [
   {
-    id: "nordic-portal",
-    title: "Customer Portal Modernization",
-    client: "Nordic Enterprise Client",
+    id: "fxdc-campus",
+    title: "FXDC Campus — Forex & Crypto Learning Platform",
+    client: "FXDC Labs",
     summary:
-      "Rebuilt a legacy customer portal into a secure, responsive web platform for Nordic users.",
+      "A full trading education platform with courses, live workshops, signals, and Web3 services for Forex and crypto learners.",
     details: [
-      "Migrated core workflows from a legacy stack to a modern Next.js frontend",
-      "Improved login, dashboard, and support request flows",
-      "Delivered with an India–Norway blended consulting model",
+      "Built a marketing + learning experience for Foundation, Masterclass, and Advanced trading programs",
+      "Structured course paths, enrollment CTAs, and live workshop discovery",
+      "Added trading tools messaging for automated bots, signals, and account management services",
     ],
-    url: "https://example.com",
-    tags: ["Web Platform", "UX", "Cloud"],
-    coverImage: "/images/ecommerce.jpeg",
-    // video: { type: "youtube", id: "YOUR_YOUTUBE_ID" },
-  },
-  {
-    id: "ops-automation",
-    title: "Operations Workflow Automation",
-    client: "Operations & Services Client",
-    summary:
-      "Automated internal reporting and approval workflows to reduce manual handoffs.",
-    details: [
-      "Mapped existing business processes with stakeholders in Norway",
-      "Built automation for status updates and notifications",
-      "Documented handover and training for the client team",
-    ],
-    url: "https://example.com",
-    tags: ["Automation", "Integrations", "AI Assist"],
-    coverImage: "/images/office1.png",
-    // video: { type: "file", src: "/videos/ops-demo.mp4" },
-  },
-  {
-    id: "industry-dashboard",
-    title: "Industry Insights Dashboard",
-    client: "Analytics Client",
-    summary:
-      "Designed and delivered a role-based dashboard for operational KPIs and reporting.",
-    details: [
-      "Defined KPI views for leadership and operations roles",
-      "Connected data sources into a single reporting surface",
-      "Shipped responsive UI for desktop and tablet review sessions",
-    ],
-    url: "https://example.com",
-    tags: ["Dashboards", "Data", "Product"],
+    url: "https://fxdc-labs.vercel.app/",
+    tags: ["EdTech", "FinTech", "Next.js", "Web Platform"],
     coverImage: "/images/finance.jpeg",
+  },
+  {
+    id: "taskforce",
+    title: "TaskForce — Task & Workforce Management",
+    client: "TaskForce",
+    summary:
+      "A workforce task management product with secure authentication so teams can sign in and manage day-to-day work.",
+    details: [
+      "Delivered a login and account flow for workforce users",
+      "Designed around task assignment, tracking, and operational coordination",
+      "Shipped as a responsive web app ready for team onboarding",
+    ],
+    url: "https://task-management-brown-eta-26.vercel.app/login",
+    tags: ["SaaS", "Auth", "Operations", "Web App"],
+    coverImage: "/images/office1.png",
+  },
+  {
+    id: "clubshop",
+    title: "Clubshop — Gaming Club Website Platform",
+    client: "Clubshop",
+    summary:
+      "A no-code style platform where gaming clubs create professional sites with isolated workspaces and their own subdomains.",
+    details: [
+      "Built a multi-tenant platform for club website creation and login",
+      "Enabled isolated workspaces per club with subdomain hosting",
+      "Focused on a clean onboarding path: create website or log in",
+    ],
+    url: "https://clubsite-tau.vercel.app/",
+    tags: ["Multi-tenant", "SaaS", "Gaming", "Platform"],
+    coverImage: "/images/ecommerce.jpeg",
+  },
+  {
+    id: "cat-selling-india",
+    title: "Cat Selling Platform — India",
+    client: "Cat Shop India",
+    summary:
+      "An India-focused cat selling website for listing and selling cats — not a global marketplace.",
+    details: [
+      "Built for cat selling customers and sellers in India only",
+      "Clear cat profiles with photos, age, and care details for local buyers",
+      "Simple browse and enquiry/checkout flow tailored to the Indian market",
+    ],
+    url: "https://cat-shop-frontend-sand.vercel.app/",
+    tags: ["Cat Selling", "India", "Web App", "Local Business"],
+    coverImage: "/images/healthcare.jpeg",
   },
 ];
 
-export function getFeaturedProjects(limit = 3) {
+export function getFeaturedProjects(limit = 4) {
   return clientProjects.slice(0, limit);
 }

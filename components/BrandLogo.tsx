@@ -19,30 +19,32 @@ export default function BrandLogo({
 }: BrandLogoProps) {
   const alt = `${siteConfig.name} — ${siteConfig.legalName}`;
 
-  // Logo artwork is navy + orange designed for a light surface.
-  // Keep a white plate in both themes so dark mode never washes it out.
-  const plateClass = cn(
-    "inline-flex items-center justify-center rounded-xl bg-white",
-    "shadow-sm ring-1 ring-black/5",
-    variant === "mark" && "px-2 py-1",
-    variant === "full" && "px-3 py-2",
-    variant === "withText" && "px-2 py-1.5"
+  const sizeClass = cn(
+    "h-auto w-auto max-w-[88px] object-contain sm:max-w-[110px] md:max-w-none",
+    variant === "mark" && "h-9 sm:h-10 md:h-11",
+    variant === "full" && "h-20 md:h-24 max-w-[160px]",
+    variant === "withText" && "h-12 md:h-14 max-w-[120px]"
   );
 
   const logoImage = (
-    <span className={plateClass}>
+    <span className="relative inline-flex items-center">
+      {/* Light mode logo */}
       <Image
         src="/images/logo.png"
         alt={variant === "withText" ? "" : alt}
         width={320}
         height={360}
         priority={priority}
-        className={cn(
-          "h-auto w-auto object-contain",
-          variant === "mark" && "h-10 md:h-11",
-          variant === "full" && "h-20 md:h-24",
-          variant === "withText" && "h-12 md:h-14"
-        )}
+        className={cn(sizeClass, "dark:hidden")}
+      />
+      {/* Dark mode logo — no white box; lightened navy for contrast */}
+      <Image
+        src="/images/logo-dark.png"
+        alt={variant === "withText" ? "" : alt}
+        width={320}
+        height={360}
+        priority={priority}
+        className={cn(sizeClass, "hidden dark:block")}
       />
     </span>
   );

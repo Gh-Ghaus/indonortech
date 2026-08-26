@@ -4,16 +4,16 @@ import { ArrowRight, ExternalLink } from "lucide-react";
 import { getFeaturedProjects } from "@/lib/projects";
 
 export default function FeaturedProjects() {
-  const projects = getFeaturedProjects(3);
+  const projects = getFeaturedProjects(4);
 
   return (
-    <section className="max-w-7xl mx-auto px-6">
-      <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-12">
-        <div className="max-w-2xl">
-          <p className="text-primary font-semibold tracking-wide mb-2">
+    <section className="mx-auto w-full max-w-7xl px-4 sm:px-6">
+      <div className="mb-10 flex flex-col gap-4 sm:mb-12 md:flex-row md:items-end md:justify-between md:gap-6">
+        <div className="max-w-2xl min-w-0">
+          <p className="mb-2 font-semibold tracking-wide text-primary">
             SELECTED WORK
           </p>
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground">
+          <h2 className="text-3xl font-bold text-foreground md:text-4xl">
             Client Projects
           </h2>
           <p className="mt-3 text-muted-foreground">
@@ -24,14 +24,14 @@ export default function FeaturedProjects() {
 
         <Link
           href="/projects"
-          className="inline-flex items-center gap-2 text-primary font-semibold hover:gap-3 transition-all"
+          className="inline-flex items-center gap-2 font-semibold text-primary transition-all hover:gap-3"
         >
           View all projects
           <ArrowRight className="h-4 w-4" />
         </Link>
       </div>
 
-      <div className="grid gap-8 md:grid-cols-3">
+      <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 sm:gap-8 lg:grid-cols-4">
         {projects.map((project) => (
           <article
             key={project.id}

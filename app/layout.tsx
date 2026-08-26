@@ -74,7 +74,7 @@ export default function RootLayout({
       <head>
         <link rel="alternate" type="text/plain" href="/llms.txt" title="llms.txt" />
       </head>
-      <body className="bg-background text-foreground">
+      <body className="bg-background text-foreground overflow-x-hidden">
         <JsonLd />
         <ThemeProvider
           attribute="class"
@@ -83,7 +83,7 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <Navbar />
-          <main className="min-h-screen">{children}</main>
+          <main className="min-h-screen w-full max-w-[100vw] overflow-x-hidden">{children}</main>
           <Footer />
         </ThemeProvider>
       </body>

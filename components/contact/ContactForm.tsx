@@ -1,6 +1,6 @@
 'use client';
 
-import { FormEvent, useState } from 'react';
+import { FormEvent, useRef, useState } from 'react';
 
 const MAX = {
   name: 100,
@@ -9,6 +9,10 @@ const MAX = {
   subject: 160,
   message: 4000,
 } as const;
+
+const crmApiUrl = process.env.NODE_ENV === 'development'
+  ? process.env.NEXT_PUBLIC_LOCAL_CRM_API_URL || 'http://localhost:5000/api/v1'
+  : process.env.NEXT_PUBLIC_SERVER_CRM_API_URL || '';
 
 function isValidEmail(email: string) {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
@@ -19,10 +23,10 @@ function sanitize(value: string) {
 }
 
 export default function ContactForm() {
+  const formRef = useRef<HTMLFormElement>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState('');
   const [success, setSuccess] = useState(false);
-  const [honeypot, setHoneypot] = useState('');
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -44,12 +48,6 @@ export default function ContactForm() {
     e.preventDefault();
     setError('');
     setSuccess(false);
-
-    // Bot trap — silently ignore automated fills
-    if (honeypot) {
-      setSuccess(true);
-      return;
-    }
 
     const name = sanitize(formData.name);
     const email = sanitize(formData.email);
@@ -73,12 +71,27 @@ export default function ContactForm() {
     }
 
     setIsSubmitting(true);
-    // Placeholder until a secure server endpoint is wired
-    setTimeout(() => {
-      setIsSubmitting(false);
+    try {
+      if (!crmApiUrl) {
+        throw new Error('Contact service is not configured.');
+      }
+      const response = await fetch(`${crmApiUrl.replace(/\/$/, '')}/contact-submissions`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ name, email, company, subject, message }),
+      });
+      const result = await response.json();
+      if (!response.ok || !result.success) {
+        throw new Error(result.message || 'We could not send your message.');
+      }
       setSuccess(true);
       setFormData({ name: '', email: '', company: '', subject: '', message: '' });
-    }, 800);
+      formRef.current?.reset();
+    } catch (requestError) {
+      setError(requestError instanceof Error ? requestError.message : 'We could not send your message.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const fieldClass =
@@ -93,21 +106,7 @@ export default function ContactForm() {
         We usually respond within one business day
       </p>
 
-      <form onSubmit={handleSubmit} className="flex flex-col gap-5" noValidate>
-        {/* Honeypot for bots — keep visually hidden */}
-        <div className="absolute -left-[9999px] h-0 w-0 overflow-hidden" aria-hidden="true">
-          <label htmlFor="website">Website</label>
-          <input
-            id="website"
-            name="website"
-            type="text"
-            tabIndex={-1}
-            autoComplete="off"
-            value={honeypot}
-            onChange={(e) => setHoneypot(e.target.value)}
-          />
-        </div>
-
+      <form ref={formRef} onSubmit={handleSubmit} className="flex flex-col gap-5" noValidate>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <input
             type="text"

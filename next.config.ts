@@ -1,6 +1,19 @@
 import type { NextConfig } from "next";
 
 const isProd = process.env.NODE_ENV === "production";
+const crmApiOrigins = [
+  process.env.NEXT_PUBLIC_LOCAL_CRM_API_URL || "http://localhost:5000/api/v1",
+  process.env.NEXT_PUBLIC_SERVER_CRM_API_URL,
+  "http://127.0.0.1:5000",
+  "http://[::1]:5000",
+].flatMap((value) => {
+  if (!value) return [];
+  try {
+    return [new URL(value).origin];
+  } catch {
+    return [];
+  }
+});
 
 const contentSecurityPolicy = [
   "default-src 'self'",
@@ -13,7 +26,7 @@ const contentSecurityPolicy = [
   "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
   // Next.js + next-themes need inline/eval in some builds; keep scripts scoped to self + inline
   "script-src 'self' 'unsafe-inline' 'unsafe-eval'",
-  "connect-src 'self' https:",
+  `connect-src 'self' https: ${[...new Set(crmApiOrigins)].join(" ")}`,
   "frame-src 'self' https://www.google.com https://maps.google.com https://www.youtube-nocookie.com https://www.youtube.com https://player.vimeo.com",
   "media-src 'self' blob:",
   "upgrade-insecure-requests",

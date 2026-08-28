@@ -21,10 +21,6 @@ export default function Navbar() {
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
-    setOpen(false);
-  }, [pathname]);
-
-  useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
     return () => {
       document.body.style.overflow = "";
@@ -75,6 +71,7 @@ export default function Navbar() {
                 <Link
                   key={item.name}
                   href={item.href}
+                  onClick={() => setOpen(false)}
                   className={`rounded-xl px-3 py-2.5 text-center text-sm font-medium transition-colors ${
                     pathname === item.href
                       ? "bg-primary text-primary-foreground"

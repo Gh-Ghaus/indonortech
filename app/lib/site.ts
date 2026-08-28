@@ -1,3 +1,10 @@
+const isDevelopment = process.env.NODE_ENV === "development";
+const localSiteUrl = process.env.NEXT_PUBLIC_LOCAL_SITE_URL || "http://localhost:3000";
+const serverSiteUrl =
+  process.env.NEXT_PUBLIC_SERVER_SITE_URL ||
+  process.env.NEXT_PUBLIC_SITE_URL ||
+  "https://indonortech.com";
+
 export const siteConfig = {
   name: "IndonorTech",
   legalName: "Indonor Technologies Private Limited",
@@ -5,7 +12,7 @@ export const siteConfig = {
   tagline: "Norway–India Technology Consulting",
   description:
     "IndonorTech (Indonor Technologies Private Limited) is a Norway–India technology consulting company delivering digital platforms, cloud, AI, and engineering services for Nordic and international businesses.",
-  url: process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "") || "https://indonortech.com",
+  url: (isDevelopment ? localSiteUrl : serverSiteUrl).replace(/\/$/, ""),
   locale: "en_US",
   email: "kaiynat.ashraf8@gmail.com",
   phoneNorway: "+47 414 416 28",

@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { crmApiUrl } from "@/lib/crmApi";
 
 export const runtime = "nodejs";
 
@@ -70,10 +71,7 @@ export async function POST(request: Request) {
   if (!isEmail(email)) {
     return NextResponse.json({ success: false, message: "Please enter a valid email address." }, { status: 422 });
   }
-  const isDevelopment = process.env.NODE_ENV === "development";
-  const apiUrl = isDevelopment
-    ? process.env.NEXT_PUBLIC_LOCAL_CRM_API_URL || process.env.CRM_LOCAL_API_URL || "http://localhost:5000/api/v1"
-    : process.env.NEXT_PUBLIC_SERVER_CRM_API_URL || process.env.CRM_SERVER_API_URL;
+  const apiUrl = crmApiUrl();
   if (!apiUrl) {
     return NextResponse.json({ success: false, message: "Contact service is not configured." }, { status: 503 });
   }

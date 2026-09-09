@@ -1,6 +1,7 @@
 'use client';
 
 import { FormEvent, useRef, useState } from 'react';
+import { trackWebsiteEvent } from '../analytics/WebsiteTracker';
 
 const MAX = {
   name: 100,
@@ -87,6 +88,7 @@ export default function ContactForm() {
       setSuccess(true);
       setFormData({ name: '', email: '', company: '', subject: '', message: '' });
       formRef.current?.reset();
+      trackWebsiteEvent({ type: 'form_submit', path: '/contact', title: document.title, form: 'contact' });
     } catch (requestError) {
       setError(requestError instanceof Error ? requestError.message : 'We could not send your message.');
     } finally {

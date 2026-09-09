@@ -5,6 +5,7 @@ import { Geist } from "next/font/google";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 import JsonLd from "../components/seo/JsonLd";
+import WebsiteTracker from "../components/analytics/WebsiteTracker";
 import { ThemeProvider } from "next-themes";
 import { buildMetadata, pageSeo, siteConfig } from "@/lib/site";
 
@@ -83,6 +84,7 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <Navbar />
+          <WebsiteTracker />
           <main className="min-h-screen w-full max-w-[100vw] overflow-x-hidden">{children}</main>
           <Footer />
         </ThemeProvider>

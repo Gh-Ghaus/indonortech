@@ -30,7 +30,7 @@ export default function BrandLogo({
     <span className="relative inline-flex items-center">
       {/* Light mode logo */}
       <Image
-        src="/images/logo.png"
+        src="/images/logo.jpeg"
         alt={variant === "withText" ? "" : alt}
         width={320}
         height={360}
@@ -39,7 +39,7 @@ export default function BrandLogo({
       />
       {/* Dark mode logo — no white box; lightened navy for contrast */}
       <Image
-        src="/images/logo-dark.png"
+        src="/images/logo.jpeg"
         alt={variant === "withText" ? "" : alt}
         width={320}
         height={360}

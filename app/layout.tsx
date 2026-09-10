@@ -38,8 +38,8 @@ export const metadata: Metadata = {
     },
   },
   icons: {
-    icon: [{ url: "/images/logo.png", type: "image/png" }],
-    apple: [{ url: "/images/logo.png" }],
+    icon: [{ url: "/images/logo.jpeg", type: "image/jpeg" }],
+    apple: [{ url: "/images/logo.jpeg" }],
   },
   other: {
     "ai-content": "official",

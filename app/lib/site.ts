@@ -143,7 +143,7 @@ export function buildMetadata({
       type: "website" as const,
       images: [
         {
-          url: absoluteUrl("/images/logo.png"),
+          url: absoluteUrl("/images/logo.jpeg"),
           width: 1200,
           height: 630,
           alt: `${siteConfig.name} — ${siteConfig.legalName}`,
@@ -154,7 +154,7 @@ export function buildMetadata({
       card: "summary_large_image" as const,
       title,
       description,
-      images: [absoluteUrl("/images/logo.png")],
+      images: [absoluteUrl("/images/logo.jpeg")],
     },
   };
 }

@@ -14,7 +14,12 @@ export const siteConfig = {
     "IndonorTech (Indonor Technologies Private Limited) is a Norway–India technology consulting company delivering digital platforms, cloud, AI, and engineering services for Nordic and international businesses.",
   url: (isDevelopment ? localSiteUrl : serverSiteUrl).replace(/\/$/, ""),
   locale: "en_US",
-  email: "kaiynat.ashraf8@gmail.com",
+  emails: [
+    "dev@indonortech.com",
+    "info@indonortech.com",
+    "kaiynat.ashraf8@gmail.com",
+  ],
+  email: "info@indonortech.com",
   phoneNorway: "+47 414 416 28",
   phoneIndia: "+91 78998 76574",
   keywords: [

@@ -1,4 +1,5 @@
 import { Mail, Phone, MapPin, Clock } from "lucide-react"
+import { siteConfig } from "@/lib/site"
 
 export default function ContactInfo() {
   const contactItems = [
@@ -25,7 +26,7 @@ export default function ContactInfo() {
     {
       icon: Mail,
       title: "Email",
-      details: ["kaiynat.ashraf8@gmail.com"]
+      details: [...siteConfig.emails]
     }
   ];
 

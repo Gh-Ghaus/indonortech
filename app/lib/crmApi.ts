@@ -11,3 +11,19 @@ export function crmApiCandidates() {
   const fallback = "http://127.0.0.1:5000/api/v1";
   return [...new Set([primary, fallback].filter(Boolean))];
 }
+
+const crmMediaPath = /^\/api\/v1\/(website-team\/photos|website-projects\/media)\/([^/?#]+)$/;
+
+export function toSiteAssetUrl(url?: string | null) {
+  const trimmed = String(url || "").trim();
+  if (!trimmed) return "";
+  try {
+    const parsed = new URL(trimmed, "http://local.invalid");
+    const match = parsed.pathname.match(crmMediaPath);
+    if (match) return `/api/media/${match[1]}/${match[2]}`;
+  } catch {
+    return trimmed;
+  }
+  const relative = trimmed.match(crmMediaPath);
+  return relative ? `/api/media/${relative[1]}/${relative[2]}` : trimmed;
+}

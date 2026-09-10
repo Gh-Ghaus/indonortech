@@ -99,6 +99,13 @@ export const pageSeo = {
       "Norway India case studies",
     ],
   },
+  team: {
+    title: "Team | IndonorTech Consultants in Norway and India",
+    description:
+      "Meet the IndonorTech team — consultants and engineers across Norway and India delivering digital platforms, cloud, and AI for Nordic clients.",
+    path: "/team",
+    keywords: ["IndonorTech team", "Indonor consultants", "Norway India team"],
+  },
 } as const satisfies Record<string, PageSeo>;
 
 export function absoluteUrl(path = "/") {

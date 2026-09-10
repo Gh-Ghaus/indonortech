@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Link from "next/link";
 import { ExternalLink, PlayCircle } from "lucide-react";
 import type { ClientProject } from "@/lib/projects";
@@ -16,12 +15,12 @@ export default function ProjectCard({ project }: Props) {
           <ProjectVideo video={project.video} title={project.title} />
         ) : project.coverImage ? (
           <div className="relative aspect-video w-full overflow-hidden rounded-xl bg-muted">
-            <Image
+            {/* Dynamic CMS URLs can come from any host. */}
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
               src={project.coverImage}
               alt={`${project.title} preview`}
-              fill
-              className="object-cover"
-              sizes="(max-width: 1024px) 100vw, 50vw"
+              className="h-full w-full object-cover"
             />
             <div className="absolute inset-0 flex items-center justify-center bg-black/35">
               <div className="flex items-center gap-2 rounded-full bg-background/90 px-4 py-2 text-sm font-medium text-foreground">
@@ -75,6 +74,7 @@ export default function ProjectCard({ project }: Props) {
           </div>
         ) : null}
 
+        {project.url ? (
         <Link
           href={project.url}
           target="_blank"
@@ -84,6 +84,7 @@ export default function ProjectCard({ project }: Props) {
           Visit client project
           <ExternalLink className="h-4 w-4" />
         </Link>
+        ) : null}
       </div>
     </article>
   );

@@ -1,10 +1,47 @@
-import Image from "next/image";
+"use client";
+
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import { ArrowRight, ExternalLink } from "lucide-react";
-import { getFeaturedProjects } from "@/lib/projects";
+import { featuredProjects, fetchWebsiteProjects, type ClientProject } from "@/lib/projects";
+
+function FeaturedSkeleton() {
+  return (
+    <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 sm:gap-8 lg:grid-cols-3" aria-hidden="true">
+      {Array.from({ length: 3 }).map((_, index) => (
+        <div key={index} className="overflow-hidden rounded-2xl border border-border bg-card">
+          <div className="aspect-[16/10] animate-pulse bg-muted" />
+          <div className="space-y-3 p-6">
+            <div className="h-3 w-1/3 animate-pulse rounded bg-muted" />
+            <div className="h-5 w-3/4 animate-pulse rounded bg-muted" />
+            <div className="h-12 w-full animate-pulse rounded bg-muted" />
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+}
 
 export default function FeaturedProjects() {
-  const projects = getFeaturedProjects(4);
+  const [projects, setProjects] = useState<ClientProject[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
+
+  useEffect(() => {
+    let cancelled = false;
+    const load = async () => {
+      try {
+        const data = featuredProjects(await fetchWebsiteProjects(), 5);
+        if (!cancelled) setProjects(data);
+      } catch (loadError) {
+        if (!cancelled) setError(loadError instanceof Error ? loadError.message : "Could not load projects.");
+      } finally {
+        if (!cancelled) setLoading(false);
+      }
+    };
+    load();
+    return () => { cancelled = true; };
+  }, []);
 
   return (
     <section className="mx-auto w-full max-w-7xl px-4 sm:px-6">
@@ -31,56 +68,71 @@ export default function FeaturedProjects() {
         </Link>
       </div>
 
-      <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 sm:gap-8 lg:grid-cols-4">
-        {projects.map((project) => (
-          <article
-            key={project.id}
-            className="group flex flex-col overflow-hidden rounded-2xl border border-border bg-card"
-          >
-            <div className="relative aspect-[16/10] overflow-hidden bg-muted">
-              {project.coverImage ? (
-                <Image
-                  src={project.coverImage}
-                  alt={project.title}
-                  fill
-                  className="object-cover transition duration-500 group-hover:scale-105"
-                  sizes="(max-width: 768px) 100vw, 33vw"
-                />
-              ) : null}
-            </div>
-
-            <div className="flex flex-1 flex-col p-6">
-              <p className="text-xs font-semibold uppercase tracking-wide text-primary">
-                {project.client}
-              </p>
-              <h3 className="mt-2 text-xl font-semibold text-foreground">
-                {project.title}
-              </h3>
-              <p className="mt-2 text-sm text-muted-foreground line-clamp-3">
-                {project.summary}
-              </p>
-
-              <div className="mt-auto pt-5 flex items-center justify-between gap-3">
-                <Link
-                  href={project.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 text-sm font-medium text-foreground hover:text-primary"
-                >
-                  Live URL
-                  <ExternalLink className="h-3.5 w-3.5" />
-                </Link>
-                <Link
-                  href="/projects"
-                  className="text-sm font-medium text-primary"
-                >
-                  Details
-                </Link>
+      {loading ? (
+        <div>
+          <p className="sr-only">Loading client projects</p>
+          <FeaturedSkeleton />
+        </div>
+      ) : error ? (
+        <p className="text-center text-destructive">{error}</p>
+      ) : !projects.length ? (
+        <p className="text-center text-muted-foreground">
+          Projects will appear here once they are published from the Indonor admin.
+        </p>
+      ) : (
+        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 sm:gap-8 lg:grid-cols-3">
+          {projects.map((project) => (
+            <article
+              key={project.id}
+              className="group flex flex-col overflow-hidden rounded-2xl border border-border bg-card"
+            >
+              <div className="relative aspect-[16/10] overflow-hidden bg-muted">
+                {project.coverImage ? (
+                  // Dynamic CMS URLs can come from any host.
+                  // eslint-disable-next-line @next/next/no-img-element
+                  <img
+                    src={project.coverImage}
+                    alt={project.title}
+                    className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
+                  />
+                ) : null}
               </div>
-            </div>
-          </article>
-        ))}
-      </div>
+
+              <div className="flex flex-1 flex-col p-6">
+                <p className="text-xs font-semibold uppercase tracking-wide text-primary">
+                  {project.client}
+                </p>
+                <h3 className="mt-2 text-xl font-semibold text-foreground">
+                  {project.title}
+                </h3>
+                <p className="mt-2 text-sm text-muted-foreground line-clamp-3">
+                  {project.summary}
+                </p>
+
+                <div className="mt-auto flex items-center justify-between gap-3 pt-5">
+                  {project.url ? (
+                    <Link
+                      href={project.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 text-sm font-medium text-foreground hover:text-primary"
+                    >
+                      Live URL
+                      <ExternalLink className="h-3.5 w-3.5" />
+                    </Link>
+                  ) : <span />}
+                  <Link
+                    href="/projects"
+                    className="text-sm font-medium text-primary"
+                  >
+                    Details
+                  </Link>
+                </div>
+              </div>
+            </article>
+          ))}
+        </div>
+      )}
     </section>
   );
 }

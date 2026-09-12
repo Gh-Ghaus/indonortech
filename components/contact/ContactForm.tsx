@@ -11,10 +11,6 @@ const MAX = {
   message: 4000,
 } as const;
 
-const crmApiUrl = process.env.NODE_ENV === 'development'
-  ? process.env.NEXT_PUBLIC_LOCAL_CRM_API_URL || 'http://localhost:5000/api/v1'
-  : process.env.NEXT_PUBLIC_SERVER_CRM_API_URL || '';
-
 function isValidEmail(email: string) {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 }
@@ -73,10 +69,7 @@ export default function ContactForm() {
 
     setIsSubmitting(true);
     try {
-      if (!crmApiUrl) {
-        throw new Error('Contact service is not configured.');
-      }
-      const response = await fetch(`${crmApiUrl.replace(/\/$/, '')}/contact-submissions`, {
+      const response = await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ name, email, company, subject, message }),

@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { ArrowRight, ExternalLink } from "lucide-react";
-import { featuredProjects, fetchWebsiteProjects, type ClientProject } from "@/lib/projects";
+import { featuredProjects, fetchWebsiteProjects, projectStatusLabel, type ClientProject } from "@/lib/projects";
 
 function FeaturedSkeleton() {
   return (
@@ -31,7 +31,7 @@ export default function FeaturedProjects() {
     let cancelled = false;
     const load = async () => {
       try {
-        const data = featuredProjects(await fetchWebsiteProjects(), 5);
+        const data = featuredProjects(await fetchWebsiteProjects(), 6);
         if (!cancelled) setProjects(data);
       } catch (loadError) {
         if (!cancelled) setError(loadError instanceof Error ? loadError.message : "Could not load projects.");
@@ -54,8 +54,8 @@ export default function FeaturedProjects() {
             Client Projects
           </h2>
           <p className="mt-3 text-muted-foreground">
-            A snapshot of platforms and workflows we have delivered — with live
-            URLs and demo recordings on the projects page.
+            A snapshot of six client and internal projects — completed or still
+            in progress — with live URLs and demo recordings on the projects page.
           </p>
         </div>
 
@@ -102,6 +102,9 @@ export default function FeaturedProjects() {
                 <p className="text-xs font-semibold uppercase tracking-wide text-primary">
                   {project.client}
                 </p>
+                <span className={`mt-2 inline-flex w-fit rounded-full px-2.5 py-1 text-[11px] font-semibold ${project.status === "IN_PROGRESS" ? "bg-amber-100 text-amber-800" : "bg-emerald-100 text-emerald-800"}`}>
+                  {projectStatusLabel(project.status)}
+                </span>
                 <h3 className="mt-2 text-xl font-semibold text-foreground">
                   {project.title}
                 </h3>

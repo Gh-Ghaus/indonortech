@@ -11,7 +11,8 @@ export default function ProjectsHero() {
         </h1>
         <p className="mt-5 text-lg text-muted-foreground max-w-2xl mx-auto">
           Selected IndonorTech engagements with live project links, short delivery
-          notes, and demo recordings where available.
+          notes, and demo recordings where available. Six projects in total —
+          completed or currently in progress.
         </p>
       </div>
     </section>

@@ -14,6 +14,7 @@ export type ClientProject = {
   video?: ProjectVideo | null;
   coverImage?: string;
   featured?: boolean;
+  status?: "COMPLETED" | "IN_PROGRESS";
   displayOrder?: number;
 };
 
@@ -26,7 +27,11 @@ export async function fetchWebsiteProjects(): Promise<ClientProject[]> {
   return Array.isArray(result.data) ? result.data : [];
 }
 
-export function featuredProjects(projects: ClientProject[], limit = 5) {
+export function featuredProjects(projects: ClientProject[], limit = 6) {
   const selected = projects.filter((project) => project.featured !== false);
   return (selected.length ? selected : projects).slice(0, limit);
+}
+
+export function projectStatusLabel(status?: ClientProject["status"]) {
+  return status === "IN_PROGRESS" ? "In progress" : "Completed";
 }

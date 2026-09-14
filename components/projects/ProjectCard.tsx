@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { ExternalLink, PlayCircle } from "lucide-react";
-import type { ClientProject } from "@/lib/projects";
+import { projectStatusLabel, type ClientProject } from "@/lib/projects";
 import ProjectVideo from "./ProjectVideo";
 
 type Props = {
@@ -41,6 +41,9 @@ export default function ProjectCard({ project }: Props) {
           <p className="text-sm font-semibold tracking-wide text-primary">
             {project.client}
           </p>
+          <span className={`mt-2 inline-flex rounded-full px-2.5 py-1 text-xs font-semibold ${project.status === "IN_PROGRESS" ? "bg-amber-100 text-amber-800" : "bg-emerald-100 text-emerald-800"}`}>
+            {projectStatusLabel(project.status)}
+          </span>
           <h3 className="mt-2 text-2xl md:text-3xl font-bold text-foreground">
             {project.title}
           </h3>
